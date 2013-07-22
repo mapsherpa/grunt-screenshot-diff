@@ -2,6 +2,8 @@
 
 > Compare images taken in different test runs and highlight differences
 
+A grunt plugin that wraps [automated-screenshot-diff](https://github.com/igorescobar/automated-screenshot-diff) to automate screenshot comparisons.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
@@ -35,55 +37,77 @@ grunt.initConfig({
 })
 ```
 
+This task is a [multi task](https://github.com/gruntjs/grunt/blob/master/docs/types_of_tasks.md#multi-tasks), meaning that grunt will automatically iterate over all exec targets if a target is not specified.
+
+Directories to run screenshot comparisons in are specified in the [files](http://gruntjs.com/configuring-tasks#files) section of the task configuration, however only `src` files are used.  The most common configuration would be to specify `files` as an array of paths in which to compare screenshots.
+
 ### Options
 
-#### options.separator
+#### options['previous-release']
 Type: `String`
-Default value: `',  '`
+Default value: `'v1'`
 
-A string value that is used to do something with whatever.
+A string used to identify screenshots associated with a previous version to use in the comparison.
 
-#### options.punctuation
+#### options.['current-release']
 Type: `String`
-Default value: `'.'`
+Default value: `'v2'`
 
-A string value that is used to do something else with whatever else.
+A string used to identify screenshots associated with the current version to use in the comparison.
+
+#### options.['ignore-not-changed']
+Type: `String`
+Default value: `false`
+
+A boolean used to control whether not changed scenarios are saved in the generated difference report.
+
+#### options.outputFormat
+Type: `String`
+Default value: `'html'`
+
+One of `'html'` or `'json'`, controls the format of the generated difference report
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  screenshot_diff: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, we compare screenshots using the default options which generate a difference report between files tagged with v1 and v2 in the `screenshots` folder.
 
 ```js
 grunt.initConfig({
   screenshot_diff: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
     },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    files: ['screenshots'],
+  },
+})
+```
+
+#### Custom Options
+In this example, custom options are used change the tags used to identify the versions, change the output format to json and include unchanged files in the resulting report.
+
+```js
+grunt.initConfig({
+  screenshot_diff: {
+    options: {
+      'previous-release': 'prev',
+      'current-release': 'curr',
+      'ignore-not-changed': true,
+      outputFormat: 'json'
     },
+    files: ['screenshots'],
   },
 })
 ```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+
+## TODO
+
+* there is no handling of incorrect path specifications, for instance if the files configuration points to a file instead of a path.
+* there is no handling of various erroneous configurations that could be set
+* there is no testing of multiple task configurations or multiple source files
+* there are no tests to handle various error conditions
 
 ## Release History
 _(Nothing yet)_
