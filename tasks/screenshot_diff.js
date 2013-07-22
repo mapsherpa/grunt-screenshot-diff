@@ -28,8 +28,6 @@ module.exports = function(grunt) {
       'outputFormat': 'html'
     });
     
-    grunt.log.writeln(JSON.stringify(this.files));
-
     // Iterate over all specified file groups.
     async.every(this.files, function(f, doneOne) {
       if (f.src.length) {

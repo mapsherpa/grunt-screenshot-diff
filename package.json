@@ -1,7 +1,7 @@
 {
   "name": "grunt-screenshot-diff",
   "description": "Compare images taken in different test runs and highlight differences",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/mapsherpa/grunt-screenshot-diff",
   "author": {
     "name": "Paul Spencer",
