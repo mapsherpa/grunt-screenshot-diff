@@ -40,12 +40,10 @@ module.exports = function(grunt) {
           grunt.util._.forEach(options,function(value, option) {
             opts.push('--'+option+'='+value);
           });
-          grunt.log.writeln(JSON.stringify(opts));
           grunt.util.spawn({
-            cmd: './node_modules/.bin/automated-screenshot-diff',
+            cmd: __dirname + '/../node_modules/.bin/automated-screenshot-diff',
             args: opts
           }, function (errorObj, result, code) {
-            grunt.log.writeln('run done with result:\n ' + result + '\nand code ' + code);
             if (code > 0) {
               grunt.log.error('error');
               grunt.log.error(result.stdout);
@@ -57,19 +55,16 @@ module.exports = function(grunt) {
             if (result.stderr) {
               grunt.verbose.write(result.stderr + '\n\n');
             }
-            console.log('done one file, moving on');
             next();
           });
         }, function (err) {
           if (err) {
             grunt.log.error('error:', err);
           }
-          grunt.log.writeln('doneOne');
           doneOne(err ? false : true);
         });
       }
     }, function(passed) {
-      grunt.log.writeln('all done with ' + passed);
       done(passed);
     });
   });

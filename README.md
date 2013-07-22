@@ -110,4 +110,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * there are no tests to handle various error conditions
 
 ## Release History
-_(Nothing yet)_
+* 0.1.0 - initial release
+* 0.1.1 - remove extraneous logging, fixate path to `automated_screenshot_diff` so task works in other projects.
