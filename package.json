@@ -1,0 +1,46 @@
+{
+  "name": "grunt-screenshot-diff",
+  "description": "Compare images taken in different test runs and highlight differences",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mapsherpa/grunt-screenshot-diff",
+  "author": {
+    "name": "Paul Spencer",
+    "email": "paul@pagameba.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mapsherpa/grunt-screenshot-diff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mapsherpa/grunt-screenshot-diff/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mapsherpa/grunt-screenshot-diff/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "automated-screenshot-diff": "~0.1.3",
+    "async": "~0.2.9"
+  }
+}
